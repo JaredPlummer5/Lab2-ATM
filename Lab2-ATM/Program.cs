@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Lab1
+namespace Lab2
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
