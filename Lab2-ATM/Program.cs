@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace Lab2
 {
@@ -14,13 +15,14 @@ namespace Lab2
             Console.WriteLine("Welcome!");
 
             // Console.WriteLine("Current Balance: " + balance);
-            decimal balance = 100.05m;
+            decimal balance = 0.00m;
             int play = 0;
             do
             {
                 Console.WriteLine("Press 1 to see your Balance");
                 Console.WriteLine("Press 2 to Withdraw money");
                 Console.WriteLine("Press 3 to Deposit money");
+                Console.WriteLine("Press 4 to exit");
                 int action = Convert.ToInt32(Console.ReadLine());
 
 
@@ -42,6 +44,11 @@ namespace Lab2
                     Console.WriteLine($"Current Balance: ${balance}");
 
                 }
+                else if(action == 4)
+                {
+                    //Console.WriteLine($"Current Balance: ${balance}");
+                    play = 1;
+                }
                 else
                 {
                     Console.WriteLine("Enter a vaild option");
@@ -54,21 +61,31 @@ namespace Lab2
 
 
 
+        ///////////////////////////////////////////////// VIEWBALANCE ///////////////////////////
 
         public static decimal ViewBalance(decimal balance)
         {
             return balance;
 
         }
+        ////////////////////////////////////////////////////////////////////////////////////////
 
-        ///////////////////////////////////////////////// TEST FOR VIEWBALANCE ///////////////////////////////////////
+
+
+        ///////////////////////////////////////////////// TEST FOR VIEWBALANCE ///////////////////////
         public static decimal ViewBalanceTest(decimal balance)
         {
             return balance;
 
         }
 
-        ///////////////////////////////////////////////// TEST FOR VIEWBALANCE ///////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        
+        //////////////////////////////////////// Withdraw ////////////////////////////////////////////////
+
 
         public static decimal Withdraw(decimal balance)
 
@@ -76,11 +93,11 @@ namespace Lab2
             Console.Write("Select an amount: ");
             decimal withdrawal = Convert.ToInt32(Console.ReadLine());
 
-            while (withdrawal < 0)
-            {
-                Console.Write("Select an amount: ");
-                withdrawal = Convert.ToInt32(Console.ReadLine());
-            }
+            //while (withdrawal < 0)
+            //{
+            //    Console.Write("Select an amount: ");
+            //    withdrawal = Convert.ToInt32(Console.ReadLine());
+            //}
 
 
             if (balance > 0)
@@ -89,11 +106,15 @@ namespace Lab2
             }
             else
             {
-                balance = 0;
+                balance = balance;
             }
             return balance;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+
+        //////////////////////////////////////// Test for Withdraw ////////////////////////////////////////////////
 
         public static decimal WithdrawTest(decimal balance, decimal withdrawal)
         {
@@ -107,28 +128,40 @@ namespace Lab2
             return balance;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+
+        //////////////////////////////////////// Test for Deposit ////////////////////////////////////////////////
+
+
+
         public static decimal Deposit(decimal balance)
         {
 
             Console.Write("Select an amount: ");
             decimal deposit = Convert.ToInt32(Console.ReadLine());
-            while (deposit < 0)
-            {
-                Console.Write("Select an amount: ");
-                deposit = Convert.ToInt32(Console.ReadLine());
-            }
+            //while (deposit < 0)
+            //{
+            //    Console.Write("Select an amount: ");
+            //    deposit = Convert.ToInt32(Console.ReadLine());
+            //}
             if (deposit > 0)
             {
                 balance += deposit;
 
             }
+            else
+            {
+                balance = balance;
+            }
             return balance;
 
 
         }
+        ////////////////////////////////////////////////////////////////////////////////////////
+        
 
-
-
+        ////////////////////////////////////////// Test for Deposit //////////////////////////////////////////////
 
         public static decimal DepositTest(decimal balance, decimal deposit)
         {
@@ -142,6 +175,7 @@ namespace Lab2
             return balance;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
     }
 }
 
