@@ -47,7 +47,7 @@ namespace Lab2
                     Console.WriteLine("Enter a vaild option");
                 }
 
-               
+
             } while (play == 0);
         }
 
@@ -76,6 +76,13 @@ namespace Lab2
             Console.Write("Select an amount: ");
             decimal withdrawal = Convert.ToInt32(Console.ReadLine());
 
+            while (withdrawal < 0)
+            {
+                Console.Write("Select an amount: ");
+                withdrawal = Convert.ToInt32(Console.ReadLine());
+            }
+
+
             if (balance > 0)
             {
                 balance -= withdrawal;
@@ -90,20 +97,15 @@ namespace Lab2
 
         public static decimal WithdrawTest(decimal balance, decimal withdrawal)
         {
-            Console.Write("Select an amount: ");
-
-
-            if (balance > 0 && (withdrawal > 0 || withdrawal >= balance))
+            if (withdrawal > balance)
             {
-                balance -= withdrawal;
+                throw new Exception("Insufficient balance");
             }
-            else
-            {
-                balance = 0;
-            }
+
+            balance -= withdrawal;
+
             return balance;
         }
-
 
         public static decimal Deposit(decimal balance)
         {
@@ -130,25 +132,13 @@ namespace Lab2
 
         public static decimal DepositTest(decimal balance, decimal deposit)
         {
-            Console.Write("Select an amount: ");
-
-            while (deposit < 0)
+            if (deposit <= 0)
             {
-                Console.Write("Select an amount: ");
-                deposit = Convert.ToInt32(Console.ReadLine());
+                throw new Exception("Invalid Transaction");
             }
 
-            if (deposit > 0)
-            {
-                balance += deposit;
+            balance += deposit;
 
-            }
-            else
-            {
-                throw new Exception("invalid transaction");
-
-
-            }
             return balance;
         }
 
